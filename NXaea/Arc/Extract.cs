@@ -2,14 +2,14 @@
 
 namespace NXaea.Arc
 {
-    internal class ArcExtract
+    internal class Extract
     {
-        public static void Extract(string InputPath, string? OutputPath)
+        public static void ExtractArc(string inputPath, string? outputPath)
         {
-            string InputDirectory = Path.GetDirectoryName(InputPath);
-            string OutputFolder = OutputPath != null ? OutputPath : Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(InputPath));
-            string JsonPath = Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(InputPath) + ".json");
-            string PackPath = Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(InputPath) + ".pack");
+            string InputDirectory = Path.GetDirectoryName(inputPath)!;
+            string OutputFolder = outputPath != null ? outputPath : Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath));
+            string JsonPath = Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath) + ".json");
+            string PackPath = Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath) + ".pack");
 
             if (!File.Exists(JsonPath) || !File.Exists(PackPath))
             {
@@ -17,11 +17,10 @@ namespace NXaea.Arc
                 return;
             }
 
-            string JsonData = File.ReadAllText(JsonPath);
-            Arc ArcRoot = JsonSerializer.Deserialize<Arc>(JsonData);
+            Arc Root = JsonSerializer.Deserialize<Arc>(File.ReadAllText(JsonPath))!;
             byte[] ArcData = File.ReadAllBytes(PackPath);
 
-            foreach (Group GroupInfo in ArcRoot.Groups)
+            foreach (Group GroupInfo in Root.Groups)
             {
                 string GroupPath = Path.Combine(OutputFolder, GroupInfo.Name);
 
@@ -30,8 +29,7 @@ namespace NXaea.Arc
 
                 foreach (Entry EntryInfo in GroupInfo.OrderedEntries)
                 {
-                    string EntryFolder = Path.GetDirectoryName(EntryInfo.OriginalFilename);
-                    string EntryFolderPath = Path.Combine(GroupPath, EntryFolder);
+                    string EntryFolderPath = Path.Combine(GroupPath, Path.GetDirectoryName(EntryInfo.OriginalFilename)!);
 
                     if (!Directory.Exists(EntryFolderPath))
                         Directory.CreateDirectory(EntryFolderPath);

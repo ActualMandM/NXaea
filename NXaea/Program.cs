@@ -16,11 +16,11 @@ namespace NXaea
             {
                 if (Path.GetExtension(args[0]).ToLowerInvariant() is ".pack" or ".json")
                 {
-                    ArcExtract.Extract(args[0], args.Length == 2 ? args[1] : null);
+                    Extract.ExtractArc(args[0], args.Length == 2 ? args[1] : null);
                 }
                 else if (File.GetAttributes(args[0]).HasFlag(FileAttributes.Directory))
                 {
-                    ArcPack.Pack(args[0], args.Length == 2 ? args[1] : null);
+                    Pack.PackArc(args[0], args.Length == 2 ? args[1] : null);
                 }
             }
         }
