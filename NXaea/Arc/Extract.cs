@@ -7,7 +7,7 @@ namespace NXaea.Arc
         public static void ExtractArc(string inputPath, string? outputPath)
         {
             string InputDirectory = Path.GetDirectoryName(inputPath)!;
-            string OutputFolder = outputPath != null ? outputPath : Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath));
+            string OutputFolder = outputPath ?? Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath));
             string JsonPath = Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath) + ".json");
             string PackPath = Path.Combine(InputDirectory, Path.GetFileNameWithoutExtension(inputPath) + ".pack");
 

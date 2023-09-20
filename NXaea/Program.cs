@@ -9,7 +9,7 @@ namespace NXaea
             if (args.Length <= 0)
             {
                 Console.WriteLine("Please provide a folder or pack/json file.");
-                Console.WriteLine("Usage: NXaea <input> [<output>]");
+                Console.WriteLine("Usage: NXaea <input> [output]");
                 return;
             }
             else
