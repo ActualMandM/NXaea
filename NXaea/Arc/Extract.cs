@@ -13,7 +13,7 @@ namespace NXaea.Arc
 
             if (!File.Exists(JsonPath) || !File.Exists(PackPath))
             {
-                Console.WriteLine(".pack/.json file is missing.");
+                Console.WriteLine("The .pack or .json file is missing.");
                 return;
             }
 

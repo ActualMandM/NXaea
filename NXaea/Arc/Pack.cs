@@ -78,18 +78,14 @@ namespace NXaea.Arc
             foreach (Group GroupInfo in Root.Groups)
             {
                 if (GroupInfo.Name != GroupName)
-                {
                     continue;
-                }
-                else
-                {
-                    Entry EntryInfo = new()
-                    {
-                        OriginalFilename = InternalPath.Substring(GroupName.Length + 1).Replace('\\', '/')
-                    };
 
-                    GroupInfo.OrderedEntries.Add(EntryInfo);
-                }
+                Entry EntryInfo = new()
+                {
+                    OriginalFilename = InternalPath.Substring(GroupName.Length + 1).Replace('\\', '/')
+                };
+
+                GroupInfo.OrderedEntries.Add(EntryInfo);
             }
         }
 
