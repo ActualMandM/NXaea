@@ -71,7 +71,7 @@ namespace NXaea.Arc
 
             if (!GroupNames.Contains(GroupName))
             {
-                Console.WriteLine(GroupName + " does not exist in the game. Skipping.");
+                Console.WriteLine($"{GroupName} does not exist in the game. Skipping.");
                 return;
             }
 
