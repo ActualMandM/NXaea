@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NXaea": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\Documents\\#Arcaea Game Data\\arc_0.json\""
+    }
+  }
+}

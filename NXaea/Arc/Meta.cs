@@ -1,4 +1,6 @@
-﻿namespace NXaea.Arc
+﻿using System.Text.Json.Serialization;
+
+namespace NXaea.Arc
 {
     public class Arc
     {
@@ -18,5 +20,11 @@
         public string OriginalFilename { get; set; } = string.Empty;
         public int Offset { get; set; } = 0;
         public int Length { get; set; } = 0;
+    }
+
+    [JsonSourceGenerationOptions(WriteIndented = true)]
+    [JsonSerializable(typeof(Arc))]
+    public partial class ArcContext : JsonSerializerContext
+    {
     }
 }

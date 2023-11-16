@@ -17,7 +17,7 @@ namespace NXaea.Arc
                 return;
             }
 
-            Arc Root = JsonSerializer.Deserialize<Arc>(File.ReadAllText(JsonPath))!;
+            Arc? Root = JsonSerializer.Deserialize(File.ReadAllText(JsonPath), typeof(Arc), ArcContext.Default) as Arc;
             byte[] ArcData = File.ReadAllBytes(PackPath);
 
             foreach (Group GroupInfo in Root.Groups)

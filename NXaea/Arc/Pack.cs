@@ -47,7 +47,7 @@ namespace NXaea.Arc
 
             LoadEntries();
 
-            File.WriteAllText((outputPath ?? inputPath) + ".json", JsonSerializer.Serialize(Root, new JsonSerializerOptions { WriteIndented = true }));
+            File.WriteAllText((outputPath ?? inputPath) + ".json", JsonSerializer.Serialize(Root, typeof(Arc), ArcContext.Default));
             File.WriteAllBytes((outputPath ?? inputPath) + ".pack", Data.ToArray());
         }
 
